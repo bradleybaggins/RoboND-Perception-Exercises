@@ -17,7 +17,17 @@ filename = 'voxel_downsampled.pcd'
 pcl.save(cloud_filtered, filename)
 
 # PassThrough filter
-
+passthrough = cloud_filtered.make_passthrough_filter()
+# assign axis and range
+filter_axis = 'z'
+passthrough.set_fiter_field_name(filter_axis)
+axis_min = 0
+axis_max = 2
+passthrough.set_filter_limits(axis_min, axis_max)
+#call .filter() to obtain filtered point cloud
+cloud_filtered = passthrough.filter()
+filename = 'pass_through_filtered.pcd'
+pcl.save(cloud_filtered, filename)
 
 # RANSAC plane segmentation
 
