@@ -21,8 +21,8 @@ passthrough = cloud_filtered.make_passthrough_filter()
 # assign axis and range
 filter_axis = 'z'
 passthrough.set_fiter_field_name(filter_axis)
-axis_min = 0
-axis_max = 2
+axis_min = 0.6
+axis_max = 1.1
 passthrough.set_filter_limits(axis_min, axis_max)
 #call .filter() to obtain filtered point cloud
 cloud_filtered = passthrough.filter()
