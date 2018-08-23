@@ -35,19 +35,24 @@ seg = cloud_filtered.make_segmenter()
 seg.set_model_type(pcl.SACMODEL_PLANE)
 seg.set_method_type(pcl.SAC_RANSAC)
 #max distance threshold for consideration
-max_distance = 1
+max_distance = .01
 seg.set_distance_threshold(max_distance)
 # call .segment() to obtain set of inlier indices on d model coefficients
 inliers, coefficients = seg.segment()
 
 # Extract inliers
+extracted_inliers = cloud_filtered.extract(inliers, negative=False)
+filename = 'extracted_inliers.pcd'
+pcl.save(extracted_inliers, filename)
 
 # Save pcd for table
 # pcl.save(cloud, filename)
 
 
 # Extract outliers
-
+extracted_outliers = cloud_filtered.extract(inliers, negative=True)
+filename = 'extracted_outliers.pcd'
+pcl.save(extracted_outliers, filename)
 
 # Save pcd for tabletop objects
 
