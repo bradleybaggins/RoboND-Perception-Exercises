@@ -9,7 +9,7 @@ from pcl_helper import *
 def pcl_callback(pcl_msg):
 
     # TODO: Convert ROS msg to PCL data
-
+    cloud = pcl.load_XYZRGB(pcl_msg)
     # TODO: Voxel Grid Downsampling
     vox = cloud.make_voxel_grid_filter()
     # choose voxel (aka leaf) size
